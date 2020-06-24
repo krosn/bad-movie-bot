@@ -142,3 +142,6 @@ bot-env/
 
 # vscode
 .vscode/
+
+#secrets
+secrets.json
