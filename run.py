@@ -1,5 +1,9 @@
 from bot import RsynClient
+from secrets import Secrets
+from redditBadMovies import RedditBadMovieClient
 
 if __name__ == "__main__":
-    client = RsynClient()
-    client.run()
+    secrets = Secrets('secrets.json')
+    movie_client = RedditBadMovieClient(secrets)
+    discord_bot = RsynClient(secrets, movie_client)
+    discord_bot.run()
