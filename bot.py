@@ -44,7 +44,9 @@ class RsynClient(discord.Client):
             lines.append(movie.title)
             lines.append(movie.url)
             lines.append(f'With {movie.upvotes}, critics are raving: ')
-            (lines.append(comment) for comment in movie.commments)
+
+            for comment in movie.comments:
+                lines.append(comment)
 
             post = '\n'.join(lines)
             await message.channel.send(post)

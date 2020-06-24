@@ -27,13 +27,21 @@ class RedditBadMovieClient:
         # now just take the first 5 of those
         movies = movies[:5]
 
-        return [BadMovie(movie.title, movie.url, movie.score, movie.comments.list()) for movie in movies]
+        result = []
+
+        for movie in movies:
+            # Only take the top level comments
+            submission.comments.replace_more(limit=0)
+            comments = [comment.body for comment in movie.comments.list()[:3]]
+            result.append(BadMovie(movie.title, movie.url, movie.score, comments))
+        
+        return result
 
 
 class BadMovie:
-    def __init__(self, title: str, url: str, upvotes: int, commments: List[str]):
+    def __init__(self, title: str, url: str, upvotes: int, comments: List[str]):
         self.title = title
         self.url = url
         self.upvotes = upvotes
-        self.commments = commments
+        self.comments = comments
 
