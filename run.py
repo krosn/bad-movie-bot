@@ -7,3 +7,4 @@ if __name__ == "__main__":
     movie_client = RedditBadMovieClient(secrets)
     discord_bot = RsynClient(secrets, movie_client)
     discord_bot.run()
+    # TODO: Host this in AWS
