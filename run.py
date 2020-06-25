@@ -1,6 +1,6 @@
 from bot import RsynClient
 from secrets import Secrets
-from redditBadMovies import RedditBadMovieClient
+from reddit.badMovies import RedditBadMovieClient
 
 if __name__ == "__main__":
     secrets = Secrets('secrets.json')
