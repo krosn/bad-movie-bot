@@ -47,7 +47,7 @@ class BadMovie:
 
 class Review:
     def __init__(self, comment: str, author: str):
-        self.comment = sanitize_urls_in_comment(comment)
+        self.comment = self.sanitize_urls_in_comment(comment)
         self.author = author
 
     def sanitize_urls_in_comment(self, comment: str) -> str:
