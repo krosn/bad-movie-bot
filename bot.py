@@ -36,8 +36,9 @@ class CoomerCog(commands.Cog):
 
     @commands.command(name='gordon')
     async def hello_gordon(self, ctx) -> None:
-        await ctx.send('hello gordon', tts=True)
+        await ctx.send('hello gordon')
         await ctx.send('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.sndcdn.com%2Fartworks-QwRMSCwG63LDTzm8-nfxz6A-t500x500.jpg&f=1&nofb=1')
+
 
 
 class MovieCog(commands.Cog):
