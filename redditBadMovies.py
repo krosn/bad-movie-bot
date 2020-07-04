@@ -1,6 +1,8 @@
 from __future__ import annotations
-import praw
 from typing import List
+import re
+
+import praw
 
 from secrets import Secrets
 
@@ -51,6 +53,6 @@ class Review:
         self.author = author
 
     def sanitize_urls_in_comment(self, comment: str) -> str:
-        # TODO: Filter/encode
-        return comment
+        # TODO: Better/safer encoding
+        return re.sub('https?://', '', comment)
 
