@@ -56,8 +56,8 @@ class MovieCog(commands.Cog):
             lines.append(movie.url)
             lines.append(f'With {movie.upvotes} upvotes, critics are raving: ')
 
-            for comment in movie.comments:
-                lines.append(comment)
+            for review in movie.reviews:
+                lines.append(f"{review.comment} - {review.author}")
 
             post = '\n'.join(lines)
             await message.channel.send(post)

@@ -32,16 +32,25 @@ class RedditBadMovieClient:
         for movie in movies:
             # Only take the top level comments
             submission.comments.replace_more(limit=0)
-            comments = [comment.body for comment in movie.comments.list()[:3]]
-            result.append(BadMovie(movie.title, movie.url, movie.score, comments))
+            reviews = [Review(comment.body, comment.author) for comment in movie.comments.list()[:3]]
+            result.append(BadMovie(movie.title, movie.url, movie.score, reviews))
         
         return result
 
 
 class BadMovie:
-    def __init__(self, title: str, url: str, upvotes: int, comments: List[str]):
+    def __init__(self, title: str, url: str, upvotes: int, reviews: List[Review]):
         self.title = title
         self.url = url
         self.upvotes = upvotes
-        self.comments = comments
+        self.reviews = reviews
+
+class Review:
+    def __init__(self, comment: str, author: str):
+        self.comment = sanitize_urls_in_comment(comment)
+        self.author = author
+
+    def sanitize_urls_in_comment(self, comment: str) -> str:
+        # TODO: Filter/encode
+        return comment
 
