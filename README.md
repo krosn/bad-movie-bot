@@ -1,4 +1,4 @@
-# rsyn-bot
+# bad-movie-bot
 Discord Bad Movie Night bot
 
 # What Can it Do?
